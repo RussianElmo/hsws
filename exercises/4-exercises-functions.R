@@ -61,6 +61,9 @@ drivingTest(age);
 # ------------------------------
 # 2. Miles to Kilometers Conversion
 #
+milesToKilometers = function(miles){
+  return (miles * 1.609)
+}
 # Write a simple function that accepts a numeric value, in miles, and
 # converts the value(s) to kilometers.
 #
@@ -69,6 +72,7 @@ drivingTest(age);
 #
 # Test the function with the following vector, and print the results.
 miles = c(50, 100, 200, 275)
+milesToKilometers(miles)
 
 # What is the type (class) of the output, given the input vector miles?
 
@@ -91,6 +95,16 @@ miles = c(50, 100, 200, 275)
 #         c(mean=avg, stdDev=sd)
 #
 library(MASS) # loads the dataset called "mammals"
+
+stats = function(body, brain){
+  bodyMean = mean(body)
+  bodySd = sd(body)
+  brainMean = mean(brain)
+  brainSd = sd(brain)
+  print(paste("Mean and Standard Deviation of Body:" , round(bodyMean, digits = 2), round(bodySd, digits = 2)))
+}
+
+stats(mammals$body, mammals$brain)
 
 # ------------------------------
 
@@ -148,7 +162,7 @@ d = droplevels(Cars93[,c(3,5,7,8,12)] )                # Only use specified colu
 
 # b. Call head(), View(), or str() on the d dataset, to get a sense of the contents.
 # How many columns does it have? What are their types?
-
+iris
 # To find out more about the columns in the dataset, type:
 ?Cars93
 
@@ -327,7 +341,17 @@ loadS <- function(survey) {
   return(s);
 }
 
+
+
 s = loadS(survey);
+
+
+convert <- function(s){
+  
+  s$Height[s$HtUnit=='Imperial']= s$Height[s$HtUnit=='Imperial']/2.54;
+  
+  return(s)
+}
 # --- end load code ---
 
 # -------------------------------------------------------------------

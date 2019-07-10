@@ -188,3 +188,4 @@ for (i in 1:9) {
 
 # restore default: one plot per page
 par(mfrow=c(1,1))
+

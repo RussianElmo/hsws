@@ -30,8 +30,7 @@
 # which(x == max(x))            # return index that corresponds to the largest value
 
 # define the vector x by running the following line:
-x = c(313, 284, 311, 280, 322, 324, 302)
-
+312
 # Use the Environment tab's Grid setting, or the class(), dim(), and str() functions,
 # to learn about the vector x. 
 

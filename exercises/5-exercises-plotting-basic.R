@@ -72,7 +72,7 @@ snowcover <- data.frame(year=c(1970:1979),
 # d. Use the hist() command to plot a histogram of the snow cover values. Label your axes and the plot. 
 # Hint: use the histogram syntax: hist(x=data, xlab="x-label", main="title")
 
-
+$
 # e. Find the R summary of the snow cover column. Then make a boxplot of the snow cover column.
 # The boxplot should just be a graphical representation of the statistical summary you printed.
 # Hint: use the summary() command, and boxplot syntax: boxplot(x=data, ylab="y-label", main="title")
