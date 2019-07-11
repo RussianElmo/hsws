@@ -1,21 +1,49 @@
+
 #finds elements of B corresponding to element A, need to find specific heat later
 Li = "Li"
 Ca = "Ca"
 Mg = "Mg"
 Y = "Y"
 Zn = "Zn"
-findSpecificHeat = function(elementA){
+elementA=c(Li,Ca,Mg,Y,Zn)
 
+findSpecificHeat = function(elementA){
+  
   bIndices = which(battery_data$A == elementA)
-  bElements = as.vector(battery_data$B[min(bIndices):max(bIndices)])
+  bElements = as.vector(battery_data$B[min(bIndices):max(bIndices)])  #gives list of elements that
+  #could help with the battery
+  # print(sort(bElements, index.return = TRUE))
   specificHeat = as.vector(subset(elemental_data, Symbol %in% bElements, select = c("Specific Heat", "Symbol"), drop = TRUE))
-  specificHeat = (data.frame(specificHeat))
-  #specificHeat= (as.vector(unlist(specificHeat[1])))
+  specificHeat = data.frame(specificHeat)   #creates a data frame of the heat capacity and bElements, ordered numerically,
+  #not alphabetically like we need
+  # specificHeat= (as.vector(unlist(specificHeat[1])))
+  #sort(specificHeat$A)
   print(specificHeat)
-  betterData = merge(battery_data, specificHeat, by.Symbol, by.B)
-  #View(betterData)
+  intermediateData1=merge(battery_data, specificHeat, by.x = "B", by.y = "Symbol", all.x = TRUE)
+  intermediateData2=intermediateData1[,c(2,1,3,4,5)]
+  intermediateData2[order(intermediateData2$A), ]
+  battery_data=intermediateData2[order(intermediateData2$A), ]
   
+}
+
+graph = function(x, y, title, inputData, xTitle, yTitle){
+  plot(formula = y~x, data = inputData, main = title, ylab = yTitle, xlab = xTitle)
+  abline(lm(y~x))
+  summary(lm(y~x))
+}
+
+predict = function(specificHeat){
+  #y = a + bx
+  capacity = 59.40 + 435.07 * specificHeat
+  print(capacity)
+}
+
+percentError = function(measured, actual){
+  return((measured - actual)/actual * 100)
   
-  
-  
+}
+
+combo = function( B){
+  specificHeat = as.vector(subset(elemental_data, Symbol = B, select = c("Specific Heat"), drop = TRUE))
+  print(specificHeat)
 }
