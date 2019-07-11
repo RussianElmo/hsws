@@ -27,14 +27,15 @@ findSpecificHeat = function(elementA){
 }
 
 graph = function(x, y, title, inputData, xTitle, yTitle){
-  plot(formula = y~x, data = inputData, main = title, ylab = yTitle, xlab = xTitle)
-  abline(lm(y~x))
+  plot(formula = y~x, data = inputData, main = title, ylab = yTitle, xlab = xTitle, col = "Blue")
+  abline(lm(y~x), col = "Sky Blue")
   summary(lm(y~x))
 }
 
-predict = function(specificHeat){
+
+predict = function(specificHeat, a, b){
   #y = a + bx
-  capacity = 59.40 + 435.07 * specificHeat
+  capacity = a + b * specificHeat
   print(capacity)
 }
 
