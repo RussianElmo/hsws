@@ -50,3 +50,10 @@ combo = function( B){
 }
 
 
+multiColored = function(){
+  p = ggplot() +
+    geom_point(data = predKnow, aes(x = predKnow$`Specific Heat`, y = predKnow$Predicted), color = 'red') +
+    geom_point(data = predKnow, aes(x = predKnow$`Specific Heat`, y = predKnow$Known), color = 'blue') +
+    xlab('Specific Heat') +
+    ylab("Capacity")
+}
