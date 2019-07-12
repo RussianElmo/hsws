@@ -48,3 +48,5 @@ combo = function( B){
   specificHeat = as.vector(subset(elemental_data, Symbol = B, select = c("Specific Heat"), drop = TRUE))
   print(specificHeat)
 }
+
+
